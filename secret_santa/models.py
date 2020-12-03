@@ -99,6 +99,7 @@ def test():
     hat = Hat(participants)
 
     hat.choices()
+    print(hat.choices())
 
     results = hat.distribute()
 
