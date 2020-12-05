@@ -81,25 +81,46 @@
                             <form>
                                 {% for i in range(3) %}
                                     <div class="my-5">
-                                        <label>Participant email address: <span class="text-danger">*</span></label>
+                                        <label>Participant <span id="participant_id"></span> email address: <span class="text-danger">*</span></label>
                                         <div class="form-row">
-                                            <div class="col-md-10">
-                                                <input class="form-control form-control-lg">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <button class="btn btn-lg btn-danger w-100">Remove</button>
-                                            </div>
+                                            {#                                            <div class="col-md-10">#}
+                                            <input class="form-control form-control-lg">
+                                            {#                                            </div>#}
+                                            {#                                    <div class="col-md-2 mt-md-0 mt-2">#}
+                                            {#                                        <button class="btn btn-lg btn-danger w-100 remove-participant">Remove</button>#}
+                                            {#                                    </div>#}
                                         </div>
                                     </div>
                                 {% endfor %}
-
-                                <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-lg btn-success">+ Add Another Participant</button>
+                                <div class="my-5">
+                                    <label>Participant <span id="participant_id"></span> email address: <span class="text-danger">*</span></label>
+                                    <div class="form-row">
+                                        <div class="col-md-10">
+                                            <input class="form-control form-control-lg">
+                                        </div>
+                                        <div class="col-md-2 mt-md-0 mt-2">
+                                            <button class="btn btn-lg btn-danger remove-participant w-100">Remove</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-lg btn-success" id="add_participant">+ Add Another Participant</button>
+                            </div>
                         </div>
                         <div id="step-2" class="tab-pane" role="tabpanel">
-                            Step content
+                            <div class="my-5">
+                                <label>Max spend:</label>
+                                <div class="form-row">
+                                    <input class="form-control form-control-lg">
+                                </div>
+                            </div>
+                            <div class="my-5">
+                                <label>Max spend:</label>
+                                <div class="form-row">
+                                    <input class="form-control form-control-lg">
+                                </div>
+                            </div>
                         </div>
                         <div id="step-3" class="tab-pane" role="tabpanel">
                             Step content
@@ -116,13 +137,69 @@
     </section>
 </div>
 <script>
+
     $(document).ready(function () {
 
-        // SmartWizard initialize
-        $('#smartwizard').smartWizard({
-            theme: 'dots'
-        });
+        {#function loopOverParticipants() {#}
+        {#    $("div .form-row").each(function (index) {#}
+        {#console.log($(this).find('span #participant_id'))#}
+        {#        $(this).find('span #participant_id').text(index);#}
+        {#    })#}
+        {# }#}
 
+        function loopOverParticipants() {
+            $("div .form-row").each(function (index) {
+                {#console.log($(this).find('span #participant_id'))#}
+                $("div .my-5").remove()
+                $("div #step-2").append(
+                    "<div class=\"my-5\">\n" +
+                    "    <label>Participant:</label>\n" +
+                    "    <div class=\"form-row\">\n" +
+                    "        <input class=\"form-control form-control-lg\" value=\""+ $(this).find('input').val() +"\">\n" +
+                    "    </div>\n" +
+                    "</div>"
+                )
+            })
+            participants.each
+        }
+
+        {#$("div #step-2").append(#}
+        {##}
+        {#)#}
+
+        $("#add_participant").on('click', function () {
+            $('form').append(
+                "<div class=\"my-5\">\n" +
+                "    <label>Participant <span id=\"participant_id\"></span> email address: <span class=\"text-danger\">*</span></label>\n" +
+                "    <div class=\"form-row\">\n" +
+                "        <div class=\"col-md-10\">\n" +
+                "            <input class=\"form-control form-control-lg\">\n" +
+                "        </div>\n" +
+                "        <div class=\"col-md-2 mt-md-0 mt-2\">\n" +
+                "            <button class=\"btn btn-lg btn-danger remove-participant w-100\">Remove</button>\n" +
+                "        </div>\n" +
+                "    </div>\n" +
+                "</div>"
+            )
+            $('#smartwizard').smartWizard("reset");
+
+            $(".remove-participant").on('click', function () {
+                $(this).parent().parent().parent().remove();
+                $('#smartwizard').smartWizard("reset");
+                loopOverParticipants()
+            })
+        })
+
+        $(".remove-participant").on('click', function () {
+            $(this).parent().parent().parent().remove();
+            $('#smartwizard').smartWizard("reset");
+            loopOverParticipants()
+        })
+
+        $('#smartwizard').smartWizard({
+            theme: 'dots',
+            autoAdjustHeight: true
+        });
     });
 </script>
 </body>
