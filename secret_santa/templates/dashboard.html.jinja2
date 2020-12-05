@@ -5,117 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
 
     <title>Secret Santa</title>
 </head>
+
 <body>
-
-
-<div class="container">
-{#    <header class="blog-header py-3">#}
-{#        <div class="row flex-nowrap justify-content-between align-items-center">#}
-{#            <div class="col-4 pt-1">#}
-{#                <a class="text-muted" href="#">Subscribe</a>#}
-{#            </div>#}
-{#            <div class="col-4 text-center">#}
-{#                <a class="blog-header-logo text-dark" href="#">Large</a>#}
-{#            </div>#}
-{#            <div class="col-4 d-flex justify-content-end align-items-center">#}
-{#                <a class="text-muted" href="#" aria-label="Search">#}
-{#                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title>#}
-{#                        <circle cx="10.5" cy="10.5" r="7.5"></circle>#}
-{#                        <path d="M21 21l-5.2-5.2"></path>#}
-{#                    </svg>#}
-{#                </a>#}
-{#                <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>#}
-{#            </div>#}
-{#        </div>#}
-{#    </header>#}
-<header class="py-3">
-        <div class="row flex-nowrap d-flex justify-content-between border-bottom">
-            <div class="d-flex align-items-center">
-            </div>
-            <div>
-                <div class="text-dark display-4">Secret Santa</div>
-            </div>
-            <div class="d-flex align-items-center">
-                <a class="btn btn-sm btn-outline-secondary" href="https://github.com/jackwardell/SecretSanta">Github</a>
-            </div>
-        </div>
-    </header>
-    <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-            <a class="p-2 text-muted" href="#">World</a>
-            <a class="p-2 text-muted" href="#">U.S.</a>
-            <a class="p-2 text-muted" href="#">Technology</a>
-            <a class="p-2 text-muted" href="#">Design</a>
-            <a class="p-2 text-muted" href="#">Culture</a>
-            <a class="p-2 text-muted" href="#">Business</a>
-            <a class="p-2 text-muted" href="#">Politics</a>
-            <a class="p-2 text-muted" href="#">Opinion</a>
-            <a class="p-2 text-muted" href="#">Science</a>
-            <a class="p-2 text-muted" href="#">Health</a>
-            <a class="p-2 text-muted" href="#">Style</a>
-            <a class="p-2 text-muted" href="#">Travel</a>
-        </nav>
-    </div>
-
-    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
-            <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
-        </div>
-    </div>
-
-    <div class="row mb-2">
-        <div class="col-md-6">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">World</strong>
-                    <h3 class="mb-0">Featured post</h3>
-                    <div class="mb-1 text-muted">Nov 12</div>
-                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Continue reading</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#55595c"></rect>
-                        <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-success">Design</strong>
-                    <h3 class="mb-0">Post title</h3>
-                    <div class="mb-1 text-muted">Nov 11</div>
-                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="stretched-link">Continue reading</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#55595c"></rect>
-                        <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
-            <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
-        </div>
-    </div>
-</div>
-
-
 <div class="container">
     <header class="py-3">
         <div class="row flex-nowrap d-flex justify-content-between border-bottom">
@@ -130,35 +31,135 @@
         </div>
     </header>
 
-    <div class="row">
-        <div class="jumbotron text-white rounded bg-dark mw-100" style="background-image: url('{{ url_for("static", filename="img/secret_santa.jpeg") }}'); background-size: cover; background-position: center;">
-            <div class="col-md-6 px-0">
-                <h1 class="display-4 font-italic">Who's been naughty & who's been nice?</h1>
-                <p class="lead my-3">Quickly input a list of email addresses, some simple rules and your group will have who to buy for in their inbox in no time</p>
-                <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">GO</a></p>
-            </div>
+    <section class="row p-4 p-md-5 mb-3 text-white rounded" style="background-image: url('{{ url_for("static", filename="img/secret_santa.jpeg") }}'); background-size: cover; background-position: center;">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 font-italic">Who's been naughty & who's been nice?</h1>
+            <p class="lead my-3">Quickly input a list of email addresses, some simple rules and your group will have who to buy for in their inbox in no time</p>
+            <p class="lead mb-0"><a href="#form" class="text-white font-weight-bold">GO</a></p>
         </div>
-    </div>
-</div>
-
-<main role="main" class="container">
-    <div class="row">
-        <div class="card">
+    </section>
+    <section class="row my-3" id="form">
+        <div class="card w-100">
+            <div class="card-header">
+                Assemble Your Participants
+            </div>
             <div class="card-body">
-                hell
+                <div id="smartwizard">
+                    <ul class="nav">
+                        <li>
+                            <a class="nav-link" href="#step-1">
+                                Add your participants
+                                <br>
+                                <small>Add names and email addresses for all your group</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#step-2">
+                                Set your rules
+                                <br>
+                                <small>Set rules like exclusions and max spend</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#step-3">
+                                Format the invitation
+                                <br>
+                                <small>Write what gets sent out in your invitation email</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#step-4">
+                                Confirm and submit
+                                <br>
+                                <small>Make sure eveything is in order before you send off the match ups</small>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="step-1" class="tab-pane" role="tabpanel">
+                            <form>
+                                {% for i in range(3) %}
+                                    <div class="my-5">
+                                        <label>Participant email address: <span class="text-danger">*</span></label>
+                                        <div class="form-row">
+                                            <div class="col-md-10">
+                                                <input class="form-control form-control-lg">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button class="btn btn-lg btn-danger w-100">Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-lg btn-success">+ Add Another Participant</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="step-2" class="tab-pane" role="tabpanel">
+                            Step content
+                        </div>
+                        <div id="step-3" class="tab-pane" role="tabpanel">
+                            Step content
+                        </div>
+                        <div id="step-4" class="tab-pane" role="tabpanel">
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+</div>
+<script>
+    $(document).ready(function () {
 
-</main>
+        // SmartWizard initialize
+        $('#smartwizard').smartWizard({
+            theme: 'dots'
+        });
 
-{#<footer class="blog-footer">#}
-{#    <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>#}
-{#    <p>#}
-{#        <a href="#">Back to top</a>#}
-{#    </p>#}
-{#</footer>#}
-
-
+    });
+</script>
 </body>
+
 </html>
+{#        <div class="card w-100">#}
+{#            <div class="card-header">#}
+{#                Assemble Your Participants#}
+{#            </div>#}
+{#            <div class="card-body">#}
+{#                <h5 class="card-title">Secret Santa</h5>#}
+{#                <p class="card-text">Add an email address for each participant and then submit, it's that easy!</p>#}
+{#                <form>#}
+{#                    {% for i in range(3) %}#}
+{#                        <label>Participant 1 email address:<span class="text-danger">*</span></label>#}
+{#                        <div class="form-row my-2">#}
+{#                            <div class="col-md-10">#}
+{#                                <input class="form-control form-control-lg">#}
+{#                                <a class="small" href="#">Add an exclussion</a>#}
+{#                            </div>#}
+{#                            <div class="col-md-2">#}
+{#                                <button class="btn btn-lg btn-danger">Remove</button>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{##}
+{#                    <div class="form-group text-center">#}
+{#                        <button type="submit" class="btn btn-lg btn-success">+ Add Another Participant</button>#}
+{#                    </div>#}
+{##}
+{#                    <div class="form-group text-center">#}
+{#                        <button type="submit" class="btn btn-lg btn-primary">Submit</button>#}
+{#                    </div>#}
+{##}
+{#                </form>#}
+
+{##}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
