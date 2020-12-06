@@ -7,14 +7,69 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css"/>
-
-    <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
 
     <title>Secret Santa</title>
 </head>
+
+{% macro exclude(display=false, with_remove=true) %}
+    <div class="mb-2" {% if not display %}style="display: none"{% endif %}>
+        <div>
+            <div>
+                <label>Email address to exclude:</label>
+                {% if with_remove %}
+                    <div class="form-row">
+                        <div class="col-md-9">
+                            <input class="form-control">
+                        </div>
+                        <div class="col-md-3 mt-md-0 mt-2">
+                            <button class="btn btn-danger w-100 remove_exclusion">Remove</button>
+                        </div>
+                    </div>
+                {% else %}
+                    <input class="form-control">
+                {% endif %}
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Apply Both Ways
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#        {% if with_add %}#}
+        {#            <div class="form-group text-center mt-2">#}
+        {#                <button class="btn btn-success add_exclusion">+ Add Another Exclusion</button>#}
+        {#            </div>#}
+        {#        {% endif %}#}
+    </div>
+{% endmacro %}
+
+{% macro participant(with_remove=true) %}
+    <div class="my-5">
+        <label>Participant email address: <span class="text-danger">*</span></label>
+        {% if with_remove %}
+            <div class="form-row">
+                <div class="col-md-10">
+                    <input class="form-control form-control-lg">
+                </div>
+                <div class="col-md-2 mt-md-0 mt-2">
+                    <button class="btn btn-lg btn-danger remove_participant w-100">Remove</button>
+                </div>
+            </div>
+        {% else %}
+            <input class="form-control form-control-lg">
+        {% endif %}
+        <a class="small my-1 exclude_participants">Exclude participants</a>
+        {{ exclude(display=false) }}
+        <div class="form-group text-center mt-2">
+            <button class="btn btn-success add_exclusion">+ Add Another Exclusion</button>
+        </div>
+    </div>
+{% endmacro %}
 
 <body>
 <div class="container">
@@ -38,6 +93,7 @@
             <p class="lead mb-0"><a href="#form" class="text-white font-weight-bold">GO</a></p>
         </div>
     </section>
+
     <section class="row my-3" id="form">
         <div class="card w-100">
             <div class="card-header">
@@ -78,49 +134,44 @@
 
                     <div class="tab-content">
                         <div id="step-1" class="tab-pane" role="tabpanel">
-                            <form>
+                            <form id="participants">
                                 {% for i in range(3) %}
-                                    <div class="my-5">
-                                        <label>Participant <span id="participant_id"></span> email address: <span class="text-danger">*</span></label>
-                                        <div class="form-row">
-                                            {#                                            <div class="col-md-10">#}
-                                            <input class="form-control form-control-lg">
-                                            {#                                            </div>#}
-                                            {#                                    <div class="col-md-2 mt-md-0 mt-2">#}
-                                            {#                                        <button class="btn btn-lg btn-danger w-100 remove-participant">Remove</button>#}
-                                            {#                                    </div>#}
-                                        </div>
-                                    </div>
+                                    {{ participant(with_remove=false) }}
                                 {% endfor %}
-                                <div class="my-5">
-                                    <label>Participant <span id="participant_id"></span> email address: <span class="text-danger">*</span></label>
-                                    <div class="form-row">
-                                        <div class="col-md-10">
-                                            <input class="form-control form-control-lg">
-                                        </div>
-                                        <div class="col-md-2 mt-md-0 mt-2">
-                                            <button class="btn btn-lg btn-danger remove-participant w-100">Remove</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{ participant() }}
                             </form>
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-lg btn-success" id="add_participant">+ Add Another Participant</button>
+                                <button class="btn btn-lg btn-success" id="add_participant">+ Add Another Participant</button>
                             </div>
                         </div>
                         <div id="step-2" class="tab-pane" role="tabpanel">
-                            <div class="my-5">
-                                <label>Max spend:</label>
-                                <div class="form-row">
-                                    <input class="form-control form-control-lg">
-                                </div>
-                            </div>
-                            <div class="my-5">
-                                <label>Max spend:</label>
-                                <div class="form-row">
-                                    <input class="form-control form-control-lg">
-                                </div>
-                            </div>
+                            {#                            <div class="my-5">#}
+                            {#                                <label>Max spend:</label>#}
+                            {#                                <div class="form-row">#}
+                            {#                                    <input class="form-control form-control-lg">#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                            <form id="exclude_participants">#}
+                            {#                                {% for i in range(3) %}#}
+                            {#                                    <div class="my-5">#}
+                            {#                                        <label>Participant <span id="participant_id"></span> email address: <span class="text-danger">*</span></label>#}
+                            {#                                        <div class="form-row">#}
+                            {#                                            <input class="form-control form-control-lg" disabled>#}
+                            {#                                        </div>#}
+                            {#                                    </div>#}
+                            {#                                {% endfor %}#}
+                            {#                                <div class="my-5">#}
+                            {#                                    <label>Participant <span id="participant_id"></span> email address: <span class="text-danger">*</span></label>#}
+                            {#                                    <div class="form-row">#}
+                            {#                                        <div class="col-md-10">#}
+                            {#                                            <input class="form-control form-control-lg" disabled>#}
+                            {#                                        </div>#}
+                            {#                                        <div class="col-md-2 mt-md-0 mt-2">#}
+                            {#                                            <button class="btn btn-lg btn-danger remove-participant w-100">Remove</button>#}
+                            {#                                        </div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </form>#}
                         </div>
                         <div id="step-3" class="tab-pane" role="tabpanel">
                             Step content
@@ -138,69 +189,44 @@
 </div>
 <script>
 
-    $(document).ready(function () {
-
-        {#function loopOverParticipants() {#}
-        {#    $("div .form-row").each(function (index) {#}
-        {#console.log($(this).find('span #participant_id'))#}
-        {#        $(this).find('span #participant_id').text(index);#}
-        {#    })#}
-        {# }#}
-
-        function loopOverParticipants() {
-            $("div .form-row").each(function (index) {
-                {#console.log($(this).find('span #participant_id'))#}
-                $("div .my-5").remove()
-                $("div #step-2").append(
-                    "<div class=\"my-5\">\n" +
-                    "    <label>Participant:</label>\n" +
-                    "    <div class=\"form-row\">\n" +
-                    "        <input class=\"form-control form-control-lg\" value=\""+ $(this).find('input').val() +"\">\n" +
-                    "    </div>\n" +
-                    "</div>"
-                )
-            })
-            participants.each
-        }
-
-        {#$("div #step-2").append(#}
-        {##}
-        {#)#}
-
-        $("#add_participant").on('click', function () {
-            $('form').append(
-                "<div class=\"my-5\">\n" +
-                "    <label>Participant <span id=\"participant_id\"></span> email address: <span class=\"text-danger\">*</span></label>\n" +
-                "    <div class=\"form-row\">\n" +
-                "        <div class=\"col-md-10\">\n" +
-                "            <input class=\"form-control form-control-lg\">\n" +
-                "        </div>\n" +
-                "        <div class=\"col-md-2 mt-md-0 mt-2\">\n" +
-                "            <button class=\"btn btn-lg btn-danger remove-participant w-100\">Remove</button>\n" +
-                "        </div>\n" +
-                "    </div>\n" +
-                "</div>"
-            )
+    function setupEventHandlers() {
+        $(".exclude_participants").on('click', function () {
+            $(this).hide();
+            $(this).next().show();
             $('#smartwizard').smartWizard("reset");
-
-            $(".remove-participant").on('click', function () {
-                $(this).parent().parent().parent().remove();
-                $('#smartwizard').smartWizard("reset");
-                loopOverParticipants()
-            })
-        })
-
-        $(".remove-participant").on('click', function () {
+        });
+        $(".remove_participant").on('click', function () {
             $(this).parent().parent().parent().remove();
             $('#smartwizard').smartWizard("reset");
-            loopOverParticipants()
+        });
+        $(".remove_exclusion").on('click', function () {
+            $(this).parent().parent().parent().remove()
+            $('#smartwizard').smartWizard("reset");
+        })
+        $('#smartwizard').smartWizard("reset");
+    }
+
+    $(document).ready(function () {
+
+        setupEventHandlers()
+
+        $("#add_participant").on('click', function () {
+            $('#participants').append(`{{ participant() | string }}`)
+            setupEventHandlers()
+        });
+
+        $(".add_exclusion").on('click', function () {
+            $(this).parent().prev().append(`{{ exclude(display=true) | string }}`)
+            setupEventHandlers()
         })
 
         $('#smartwizard').smartWizard({
             theme: 'dots',
             autoAdjustHeight: true
         });
+
     });
+
 </script>
 </body>
 
