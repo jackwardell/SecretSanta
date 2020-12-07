@@ -11,8 +11,6 @@ class Participant:
     name = attr.ib()
     excluded = attr.ib(factory=list, repr=False, hash=False)
 
-    # email_address = attr.ib()
-
     def __str__(self):
         return self.name
 
